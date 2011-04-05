@@ -27,4 +27,7 @@ template "/etc/hostname" do
   )
 end
 
-command "hostname -F /etc/hostname"
+execute "hostname" do
+  command "hostname -F /etc/hostname"
+  action :run
+end
