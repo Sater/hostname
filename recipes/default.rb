@@ -22,9 +22,6 @@ template "/etc/hostname" do
   owner "root"
   group "root"
   mode "0644"
-  variables(
-    :hostname => node["hostname"],
-  )
 end
 
 execute "hostname" do
