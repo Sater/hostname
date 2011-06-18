@@ -17,14 +17,16 @@
 # limitations under the License.
 #
 
-template "/etc/hostname" do
-  source "hostname.erb"
+template "/etc/sysconfig/network" do
+  source "network.erb"
   owner "root"
   group "root"
   mode "0644"
 end
 
+# /etc/sysconfig/network has already been loaded, so set it explicitly for this session
+
 execute "hostname" do
-  command "hostname -F /etc/hostname"
+  command "hostname #{node["servername"]}"
   action :run
 end
